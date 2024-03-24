@@ -71,11 +71,19 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: "Invalid credentials" });
         }
 
-        // If password matches, generate and return a JWT
+        // If password matches, generate a JWT
         const payload = { id: user._id, username: user.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.json({ message: "Login successful", token: token });
+        // Set the token in an httpOnly cookie
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'none',
+            maxAge: 3600000
+        });
+
+        res.json({ message: "Login successful" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
