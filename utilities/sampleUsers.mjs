@@ -198,7 +198,7 @@ const users = [
       {
         username: "alee",
         password: "stellarVoyage56!",
-        portrait: "/images/portraits/alee.jpg",
+        portrait: "images/portraits/alee.jpg",
         isAdmin: false,
         rank: "CAPT",
         clearanceLevel: "IV",
@@ -247,7 +247,7 @@ const users = [
       {
         username: "cfrost",
         password: "Enceladus#2585",
-        portrait: "/images/portraits/cfrost.jpg",
+        portrait: "images/portraits/cfrost.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "II",
@@ -296,7 +296,7 @@ const users = [
       {
         username: "eharkness",
         password: "Password123!",
-        portrait: "/images/portraits/eharkness.jpg",
+        portrait: "images/portraits/eharkness.jpg",
         isAdmin: false,
         rank: "No Rank",
         clearanceLevel: "No Rank",
@@ -345,7 +345,7 @@ const users = [
       {
         username: "ebrunson",
         password: "neuroParkour88!",
-        portrait: "/images/portraits/ebrunson.jpg",
+        portrait: "images/portraits/ebrunson.jpg",
         isAdmin: false,
         rank: "No Rank",
         clearanceLevel: "No Rank",
@@ -394,7 +394,7 @@ const users = [
       {
         username: "imarlowe",
         password: "nebulaHealer42!",
-        portrait: "/images/portraits/imarlowe.jpg",
+        portrait: "images/portraits/imarlowe.jpg",
         isAdmin: false,
         rank: "CDR",
         clearanceLevel: "IV",
@@ -443,7 +443,7 @@ const users = [
       {
         username: "sgrey",
         password: "enigmaAI_2024",
-        portrait: "/images/portraits/sgrey.jpg",
+        portrait: "images/portraits/sgrey.jpg",
         isAdmin: false,
         rank: "No Rank",
         clearanceLevel: "No Rank",
@@ -492,7 +492,7 @@ const users = [
       {
         username: "egreyson",
         password: "QuantumRugby2580!",
-        portrait: "/images/portraits/egreyson.jpg",
+        portrait: "images/portraits/egreyson.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "II",
@@ -541,7 +541,7 @@ const users = [
       {
         username: "elocke",
         password: "stellarVoyage32!",
-        portrait: "/images/portraits/elocke.jpg",
+        portrait: "images/portraits/elocke.jpg",
         isAdmin: false,
         rank: "LCDR",
         clearanceLevel: "IV",
@@ -590,7 +590,7 @@ const users = [
       {
         username: "econcord",
         password: "starFleet2023!",
-        portrait: "/images/portraits/econcord.jpg",
+        portrait: "images/portraits/econcord.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "IV",
@@ -639,7 +639,7 @@ const users = [
       {
         username: "fsterling",
         password: "flyHigh2585!",
-        portrait: "/images/portraits/fsterling.jpg",
+        portrait: "images/portraits/fsterling.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "I",
@@ -688,7 +688,7 @@ const users = [
       {
         username: "hjuadera",
         password: "StellarMedic*2581",
-        portrait: "/images/portraits/hjuadera.jpg",
+        portrait: "images/portraits/hjuadera.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "I",
@@ -737,7 +737,7 @@ const users = [
       {
         username: "jyasin",
         password: "st4rNavigator!",
-        portrait: "/images/portraits/jyasin.jpg",
+        portrait: "images/portraits/jyasin.jpg",
         isAdmin: false,
         rank: "CDR",
         clearanceLevel: "III",
@@ -786,7 +786,7 @@ const users = [
       {
         username: "jconcord",
         password: "SlimJim!",
-        portrait: "/images/portraits/jconcord.jpg",
+        portrait: "images/portraits/jconcord.jpg",
         isAdmin: false,
         rank: "LCDR",
         clearanceLevel: "III",
@@ -835,7 +835,7 @@ const users = [
       {
         username: "jhale",
         password: "Tactical#32",
-        portrait: "/images/portraits/jhale.jpg",
+        portrait: "images/portraits/jhale.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "I",
@@ -884,7 +884,7 @@ const users = [
       {
         username: "jkane",
         password: "complexOracle123!",
-        portrait: "/images/portraits/jkane.jpg",
+        portrait: "images/portraits/jkane.jpg",
         isAdmin: false,
         rank: "CDR",
         clearanceLevel: "IV",
@@ -933,7 +933,7 @@ const users = [
       {
         username: "kdraven",
         password: "voyageSecure!26",
-        portrait: "/images/portraits/kdraven.jpg",
+        portrait: "images/portraits/kdraven.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "IV",
@@ -982,7 +982,7 @@ const users = [
       {
         username: "kbrennan",
         password: "MartianSecur!ty2023",
-        portrait: "/images/portraits/kbrennan.jpg",
+        portrait: "images/portraits/kbrennan.jpg",
         isAdmin: false,
         rank: "LCDR",
         clearanceLevel: "II",
@@ -1036,7 +1036,7 @@ const users = [
       {
         username: "lmiyazaki",
         password: "starDust34!",
-        portrait: "/images/portraits/lmiyazaki.jpg",
+        portrait: "images/portraits/lmiyazaki.jpg",
         isAdmin: false,
         rank: "CDR",
         clearanceLevel: "IV",
@@ -1085,7 +1085,7 @@ const users = [
       {
         username: "lwolfe",
         password: "Enceladus$Explorer2023",
-        portrait: "/images/portraits/lwolfe.jpg",
+        portrait: "images/portraits/lwolfe.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "III",
@@ -1134,7 +1134,7 @@ const users = [
       {
         username: "msoren",
         password: "encrypt!Galaxy21",
-        portrait: "/images/portraits/msoren.jpg",
+        portrait: "images/portraits/msoren.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "II",
@@ -1183,7 +1183,7 @@ const users = [
       {
         username: "msato",
         password: "stellarEngineer88!",
-        portrait: "/images/portraits/msato.jpg",
+        portrait: "images/portraits/msato.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "IV",
@@ -1232,7 +1232,7 @@ const users = [
       {
         username: "mvlastimil",
         password: "StellarGuard42!",
-        portrait: "/images/portraits/mvlastimil.jpg",
+        portrait: "images/portraits/mvlastimil.jpg",
         isAdmin: false,
         rank: "PO",
         clearanceLevel: "II",
@@ -1281,7 +1281,7 @@ const users = [
       {
         username: "nravenna",
         password: "starComms2023!",
-        portrait: "/images/portraits/nravenna.jpg",
+        portrait: "images/portraits/nravenna.jpg",
         isAdmin: false,
         rank: "LCDR",
         clearanceLevel: "III",
@@ -1330,7 +1330,7 @@ const users = [
       {
         username: "nvoss",
         password: "StarGazer!233",
-        portrait: "/images/portraits/nvoss.jpg",
+        portrait: "images/portraits/nvoss.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "I",
@@ -1379,7 +1379,7 @@ const users = [
       {
         username: "qrourke",
         password: "StellarWhisper42!",
-        portrait: "/images/portraits/qrourke.jpg",
+        portrait: "images/portraits/qrourke.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "II",
@@ -1428,7 +1428,7 @@ const users = [
       {
         username: "rsylver",
         password: "PolyglotVoyager#2585",
-        portrait: "/images/portraits/rsylver.jpg",
+        portrait: "images/portraits/rsylver.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "II",
@@ -1477,7 +1477,7 @@ const users = [
       {
         username: "sorion",
         password: "starlight#2023",
-        portrait: "/images/portraits/sorion.jpg",
+        portrait: "images/portraits/sorion.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "IV",
@@ -1526,7 +1526,7 @@ const users = [
       {
         username: "tvega",
         password: "starPath3ncrypt!d",
-        portrait: "/images/portraits/tvega.jpg",
+        portrait: "images/portraits/tvega.jpg",
         isAdmin: false,
         rank: "ENS",
         clearanceLevel: "IV",
@@ -1575,7 +1575,7 @@ const users = [
       {
         username: "vraith",
         password: "PropulsionR0ck3t!",
-        portrait: "/images/portraits/vraith.jpg",
+        portrait: "images/portraits/vraith.jpg",
         isAdmin: false,
         rank: "LT",
         clearanceLevel: "II",
@@ -1624,7 +1624,7 @@ const users = [
       {
         username: 'znightshade',
         password: 'Shadow@27',
-        portrait: '/images/portraits/znightshade.jpg',
+        portrait: 'images/portraits/znightshade.jpg',
         isAdmin: false,
         rank: 'ENS',
         clearanceLevel: 'III',
@@ -1676,7 +1676,7 @@ const users = [
       {
         username: 'admin',
         password: 'Pnbis7WBYd',
-        portrait: '/images/portraits/moose.jpg',
+        portrait: 'images/portraits/moose.jpg',
         isAdmin: true,
         rank: 'No Rank',
         clearanceLevel: 'IV',

@@ -7,6 +7,8 @@ import missionsRouter from './routes/api/missions.mjs';
 import resourceRouter from './routes/api/resources.mjs';
 import inventoryRouter from './routes/api/inventory.mjs';
 import destinationRouter from './routes/api/destinations.mjs';
+import cors from 'cors';
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -14,6 +16,8 @@ dotenv.config();
 // Create Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors());
 
 // Connect to MongoDB
 async function connectToDatabase() {
