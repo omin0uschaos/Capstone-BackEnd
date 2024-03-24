@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 export const checkToken = (req, res, next) => {
     // Extract the token from cookies
-    const token = req.cookies.token; // Assuming the cookie's name is 'token'
+    const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({ message: 'Authorization token is required' });
     }
@@ -11,7 +11,7 @@ export const checkToken = (req, res, next) => {
     try {
         // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded; // Make sure this matches how you've structured your payload. Previously, it was decoded.user
+        req.user = decoded;
         next();
     } catch (error) {
         console.error(error);
