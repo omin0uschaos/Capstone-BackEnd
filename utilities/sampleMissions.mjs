@@ -1,0 +1,103 @@
+const missionsData = [
+    {
+      DateAssigned: '2601-04-12',
+      DateCompleted: '2601-05-09',
+      MissionObjective: 'Discover the Lost City of Neo-Atlantis',
+      MissionDetails: 'Explore the depths of the Great Ocean Abyss to uncover the ruins of Neo-Atlantis.',
+      MissionDifficulty: 4,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2602-07-20',
+      MissionObjective: 'Sabotage the Rogue AI Network',
+      MissionDetails: 'Infiltrate the quantum data centers on Mars to disable the rogue AI threatening Earth.',
+      MissionDifficulty: 3,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2603-03-15',
+      MissionObjective: 'Capture the Comet of Fortune',
+      MissionDetails: 'Launch a high-speed spacecraft to capture rare minerals from the passing Comet of Fortune.',
+      MissionDifficulty: 2,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2604-01-01',
+      MissionObjective: 'Rescue the Moonbase Alpha Crew',
+      MissionDetails: 'Conduct a daring rescue operation to save the crew stranded at Moonbase Alpha after a meteor strike.',
+      MissionDifficulty: 3,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2605-08-24',
+      MissionObjective: 'Establish the First Intergalactic Embassy',
+      MissionDetails: 'Travel beyond the Milky Way to establish diplomatic relations with the Andromeda civilization.',
+      MissionDifficulty: 4,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2606-11-11',
+      MissionObjective: 'Recover Ancient Alien Artifacts',
+      MissionDetails: 'Excavate the sands of Planet Xerxes to recover artifacts of an ancient alien civilization.',
+      MissionDifficulty: 2,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2607-06-18',
+      MissionObjective: 'Host the Intergalactic Music Festival',
+      MissionDetails: 'Organize and host the first music festival featuring artists from across the galaxy.',
+      MissionDifficulty: 1,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2608-09-29',
+      MissionObjective: 'Solve the Mystery of the Phantom Spaceship',
+      MissionDetails: 'Investigate the sightings of a ghostly spaceship that appears and disappears near the Orion Nebula.',
+      MissionDifficulty: 3,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2609-12-05',
+      MissionObjective: 'Invent a Time-Traveling Device',
+      MissionDetails: 'Collaborate with the brightest minds across time and space to create a working time-travel device.',
+      MissionDifficulty: 4,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2610-02-14',
+      MissionObjective: 'Win the Galactic Cooking Competition',
+      MissionDetails: 'Assemble a team of the universe’s best chefs to win the prestigious Galactic Cooking Competition.',
+      MissionDifficulty: 1,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2611-05-04',
+      MissionObjective: 'Prevent the Supernova Explosion',
+      MissionDetails: 'Implement a cutting-edge technology to prevent the impending explosion of a nearby star.',
+      MissionDifficulty: 4,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2612-08-08',
+      MissionObjective: 'Decrypt the Cosmic Signal',
+      MissionDetails: 'Decode a mysterious signal coming from the edge of the universe, believed to be a message from an advanced civilization.',
+      MissionDifficulty: 3,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2613-10-31',
+      MissionObjective: 'Hunt the Space Pirates',
+      MissionDetails: 'Track down and capture a notorious band of space pirates terrorizing the trade routes.',
+      MissionDifficulty: 3,
+      CrewIds: [],
+    },
+    {
+      DateAssigned: '2614-04-20',
+      MissionObjective: 'Clone a Dinosaur for the Galactic Zoo',
+      MissionDetails: 'Extract DNA from ancient fossils to clone a dinosaur for the new exhibit at the Galactic Zoo.',
+      MissionDifficulty: 2,
+      CrewIds: [],
+    }
+];
+
+export { missionsData };
