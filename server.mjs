@@ -8,7 +8,6 @@ import resourceRouter from './routes/api/resources.mjs';
 import inventoryRouter from './routes/api/inventory.mjs';
 import destinationRouter from './routes/api/destinations.mjs';
 import cors from 'cors';
-import cookieParser from 'cookie-parser';
 
 
 
@@ -19,10 +18,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-    origin: ['http://localhost:5173'],
-    credentials: true,
-  }));
+app.use(cors());
 
 // Connect to MongoDB
 async function connectToDatabase() {
