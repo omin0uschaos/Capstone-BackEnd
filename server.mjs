@@ -10,14 +10,12 @@ import destinationRouter from './routes/api/destinations.mjs';
 import cors from 'cors';
 
 
-
 // Load environment variables from .env file
 dotenv.config();
 
 // Create Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
-
 app.use(cors());
 
 // Connect to MongoDB
@@ -36,7 +34,6 @@ connectToDatabase();
 // Middleware
 app.use(express.json());
 app.use('/images', express.static('images'));
-app.use(cookieParser());
 
 // Routes
 app.use('/api/users', usersRouter);
