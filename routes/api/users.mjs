@@ -91,7 +91,7 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
-router.patch('/user/update/:userId', async (req, res) => {
+router.patch('/user/update/:userId', checkToken, async (req, res) => {
     const { userId } = req.params;
     const updateData = req.body;
 
@@ -113,7 +113,7 @@ router.patch('/user/update/:userId', async (req, res) => {
 });
 
 
-router.delete('/user/delete/:userId', async (req, res) => {
+router.delete('/user/delete/:userId',checkToken, async (req, res) => {
     const { userId } = req.params;
     try {
         const deletedUser = await Users.findByIdAndDelete(userId);

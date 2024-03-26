@@ -7,6 +7,7 @@ import missionsRouter from './routes/api/missions.mjs';
 import resourceRouter from './routes/api/resources.mjs';
 import inventoryRouter from './routes/api/inventory.mjs';
 import destinationRouter from './routes/api/destinations.mjs';
+import tokenRouter from './routes/api/token.mjs'
 import cors from 'cors';
 
 
@@ -41,6 +42,7 @@ app.use('/api/missions', missionsRouter);
 app.use('/api/resources', resourceRouter);
 app.use('/api/inventory', inventoryRouter);
 app.use('/api/destinations', destinationRouter)
+app.use('/api/token', tokenRouter)
 
 // Default route
 app.get('/', (req, res) => {
