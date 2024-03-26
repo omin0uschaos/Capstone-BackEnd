@@ -59,19 +59,14 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        // Find the user by username
         const user = await Users.findOne({ username: username });
         if (!user) {
             return res.status(404).json({ message: "Invalid credentials" });
         }
-
-        // Compare the provided password with the hashed password in the database
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
-
-        // If password matches, generate and return a JWT
         const payload = { id: user._id, username: user.username };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
@@ -81,5 +76,57 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
+router.get('/user/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const user = await Users.findById(userId).select('-password');
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        }
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+});
+
+router.patch('/user/update/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const updateData = req.body;
+
+    if (updateData.password) {
+        const salt = await bcrypt.genSalt(10);
+        updateData.password = await bcrypt.hash(updateData.password, salt);
+    }
+
+    try {
+        const updatedUser = await Users.findByIdAndUpdate(userId, updateData, { new: true }).select('-password');
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.json({ message: "User updated successfully", user: updatedUser });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
+router.delete('/user/delete/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const deletedUser = await Users.findByIdAndDelete(userId);
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.json({ message: "User deleted successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
 
 export default router;
