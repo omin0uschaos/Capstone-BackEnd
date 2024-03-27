@@ -204,10 +204,8 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
       }
   
       user.taskList.push(newTask);
-  
-      const updatedUser = await user.save();
-  
-      res.json({ message: "Task added successfully", user: updatedUser.select('-password') });
+      await user.save();
+      res.json({ message: "Task added successfully", taskList: user.taskList });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
