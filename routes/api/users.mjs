@@ -176,16 +176,15 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
         return res.status(404).json({ message: "User not found" });
       }
   
-      const taskIndex = user.taskList.findIndex(task => task._id.equals(taskId));
+      const taskIndex = user.taskList.findIndex(task => task._id.toString() === taskId);
       if (taskIndex === -1) {
         return res.status(404).json({ message: "Task not found" });
       }
   
-      user.taskList[taskIndex] = { ...user.taskList[taskIndex], ...updateData };
+      user.taskList[taskIndex] = { ...user.taskList[taskIndex].toObject(), ...updateData };
   
-      const updatedUser = await user.save();
-  
-      res.json({ message: "Task updated successfully", user: updatedUser.select('-password') });
+      await user.save();
+      res.json({ message: "Task updated successfully", taskList: user.taskList });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
@@ -213,7 +212,7 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
   });
 
   
-router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
+  router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
     const { userId, taskId } = req.params;
   
     try {
@@ -222,16 +221,9 @@ router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) 
         return res.status(404).json({ message: "User not found" });
       }
   
-      const taskIndex = user.taskList.findIndex(task => task._id.equals(taskId));
-      if (taskIndex === -1) {
-        return res.status(404).json({ message: "Task not found" });
-      }
-  
-      user.taskList.splice(taskIndex, 1);
-  
-      const updatedUser = await user.save();
-  
-      res.json({ message: "Task deleted successfully", user: updatedUser.select('-password') });
+      user.taskList = user.taskList.filter(task => task._id.toString() !== taskId);
+      await user.save();
+      res.json({ message: "Task deleted successfully", taskList: user.taskList });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
