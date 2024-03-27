@@ -5,7 +5,7 @@ import Department from '../../models/departmentSchema.mjs';
 import Rank from '../../models/rankSchema.mjs';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { checkToken } from '../../middleware/auth.mjs';
+import { checkToken, checkAdminToken } from '../../middleware/auth.mjs';
 import { users } from '../../utilities/sampleUsers.mjs';
 import { military } from '../../utilities/sampleMilitary.mjs';
 import { departments } from '../../utilities/sampleDepartment.mjs';
@@ -108,7 +108,7 @@ router.get('/userinfo/:username', checkToken, async (req, res) => {
 
 
 
-router.patch('/user/update/:userId', checkToken, async (req, res) => {
+router.patch('/user/update/:userId', checkAdminToken, async (req, res) => {
     const { userId } = req.params;
     const updateData = req.body;
 
@@ -129,8 +129,80 @@ router.patch('/user/update/:userId', checkToken, async (req, res) => {
     }
 });
 
+router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) => {
+    const { userId, taskId } = req.params;
+    const updateData = req.body;
+  
+    try {
+      const user = await Users.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      const taskIndex = user.taskList.findIndex(task => task._id.toString() === taskId);
+      if (taskIndex === -1) {
+        return res.status(404).json({ message: "Task not found" });
+      }
+  
+      user.taskList[taskIndex] = { ...user.taskList[taskIndex], ...updateData };
+  
+      const updatedUser = await user.save();
+  
+      res.json({ message: "Task updated successfully", user: updatedUser.select('-password') });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
+  router.post('/user/task/add/:userId', checkToken, async (req, res) => {
+    const { userId } = req.params;
+    const newTask = req.body;
+  
+    try {
+      const user = await Users.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      user.taskList.push(newTask);
+  
+      const updatedUser = await user.save();
+  
+      res.json({ message: "Task added successfully", user: updatedUser.select('-password') });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
+  router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
+    const { userId, taskId } = req.params;
+  
+    try {
+      const user = await Users.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      const taskIndex = user.taskList.findIndex(task => task._id.toString() === taskId);
+      if (taskIndex === -1) {
+        return res.status(404).json({ message: "Task not found" });
+      }
+  
+      user.taskList.splice(taskIndex, 1);
+  
+      const updatedUser = await user.save();
+  
+      res.json({ message: "Task deleted successfully", user: updatedUser.select('-password') });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
 
-router.delete('/user/delete/:userId',checkToken, async (req, res) => {
+router.delete('/user/delete/:userId',checkAdminToken, async (req, res) => {
     const { userId } = req.params;
     try {
         const deletedUser = await Users.findByIdAndDelete(userId);
