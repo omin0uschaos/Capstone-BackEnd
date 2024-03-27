@@ -176,7 +176,7 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
         return res.status(404).json({ message: "User not found" });
       }
   
-      const taskIndex = user.taskList.findIndex(task => task._id.toString() === taskId);
+      const taskIndex = user.taskList.findIndex(task => task._id.equals(taskId));
       if (taskIndex === -1) {
         return res.status(404).json({ message: "Task not found" });
       }
@@ -190,10 +190,10 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-});
+  });
 
   
-router.post('/user/task/add/:userId', checkToken, async (req, res) => {
+  router.post('/user/task/add/:userId', checkToken, async (req, res) => {
     const { userId } = req.params;
     const newTask = req.body;
   
@@ -212,10 +212,10 @@ router.post('/user/task/add/:userId', checkToken, async (req, res) => {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-});
+  });
 
   
-  router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
+router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
     const { userId, taskId } = req.params;
   
     try {
@@ -224,7 +224,7 @@ router.post('/user/task/add/:userId', checkToken, async (req, res) => {
         return res.status(404).json({ message: "User not found" });
       }
   
-      const taskIndex = user.taskList.findIndex(task => task._id.toString() === taskId);
+      const taskIndex = user.taskList.findIndex(task => task._id.equals(taskId));
       if (taskIndex === -1) {
         return res.status(404).json({ message: "Task not found" });
       }
@@ -238,7 +238,7 @@ router.post('/user/task/add/:userId', checkToken, async (req, res) => {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-});
+  });
 
   
 
