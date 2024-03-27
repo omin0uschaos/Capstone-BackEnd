@@ -91,15 +91,21 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
-router.get('/userInfo', checkToken, async (req, res) => {
+
+router.get('/userInfo/:username', checkToken, async (req, res) => {
+    const { username } = req.params;
     try {
-        const user = await Users.findById(req.user.id).select('-password');
+        const user = await Users.findOne({ username }).select('-password');
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        }
         res.json(user);
     } catch (error) {
         console.error(error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send({ message: "Internal Server Error" });
     }
 });
+
 
 
 router.patch('/user/update/:userId', checkToken, async (req, res) => {
