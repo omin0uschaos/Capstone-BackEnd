@@ -82,7 +82,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/user/add', async (req, res) => {
-    const { username, password, personalinfo, isAdmin, rank, clearanceLevel, department, title, credits, taskList } = req.body;
+    const { username, password, portrait, isAdmin, rank, clearanceLevel, department, title, credits, personalinfo } = req.body;
 
     try {
         const existingUser = await Users.findOne({ username: username });
@@ -95,14 +95,15 @@ router.post('/user/add', async (req, res) => {
         const newUser = new Users({
             username,
             password: hashedPassword,
-            personalinfo,
+            portrait,
             isAdmin,
             rank,
             clearanceLevel,
             department,
             title,
             credits,
-            taskList
+            personalinfo, 
+            taskList: [] 
         });
 
         const savedUser = await newUser.save();
@@ -113,6 +114,7 @@ router.post('/user/add', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
 
 router.get('/user/:userId', async (req, res) => {
     const { userId } = req.params;
