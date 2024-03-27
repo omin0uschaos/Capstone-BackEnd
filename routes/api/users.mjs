@@ -67,7 +67,11 @@ router.post('/login', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
-        const payload = { id: user._id, username: user.username };
+        const payload = {
+            id: user._id,
+            username: user.username,
+            isAdmin: user.isAdmin
+        };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ message: "Login successful", token: token });
@@ -76,6 +80,7 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
 
 router.get('/user/:userId', async (req, res) => {
     const { userId } = req.params;
