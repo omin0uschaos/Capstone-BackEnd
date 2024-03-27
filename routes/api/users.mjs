@@ -81,6 +81,38 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/user/add', async (req, res) => {
+    const { username, password, personalinfo, isAdmin, rank, clearanceLevel, department, title, credits, taskList } = req.body;
+
+    try {
+        const existingUser = await Users.findOne({ username: username });
+        if (existingUser) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new Users({
+            username,
+            password: hashedPassword,
+            personalinfo,
+            isAdmin,
+            rank,
+            clearanceLevel,
+            department,
+            title,
+            credits,
+            taskList
+        });
+
+        const savedUser = await newUser.save();
+
+        res.status(201).json({ message: "User created successfully", userId: savedUser._id });
+    } catch (error) {
+        console.error("Error adding new user:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 
 router.get('/user/:userId', async (req, res) => {
     const { userId } = req.params;
