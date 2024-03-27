@@ -92,7 +92,7 @@ router.get('/user/:userId', async (req, res) => {
 });
 
 
-router.get('/userInfo/:username', checkToken, async (req, res) => {
+router.get('/userinfo/:username', checkToken, async (req, res) => {
     const { username } = req.params;
     try {
         const user = await Users.findOne({ username }).select('-password');
