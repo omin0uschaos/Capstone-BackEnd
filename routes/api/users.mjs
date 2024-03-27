@@ -91,6 +91,17 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
+router.get('/userInfo', checkToken, async (req, res) => {
+    try {
+        const user = await Users.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 router.patch('/user/update/:userId', checkToken, async (req, res) => {
     const { userId } = req.params;
     const updateData = req.body;
