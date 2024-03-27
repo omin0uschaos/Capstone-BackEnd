@@ -82,7 +82,8 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/user/add', async (req, res) => {
-    const { username, password, portrait, isAdmin, rank, clearanceLevel, department, title, credits, personalinfo } = req.body;
+    const { username, portrait, isAdmin, rank, clearanceLevel, department, title, credits, personalinfo } = req.body;
+    let { password } = req.body;
 
     try {
         const existingUser = await Users.findOne({ username: username });
@@ -90,30 +91,27 @@ router.post('/user/add', async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
         const newUser = new Users({
             username,
-            password: hashedPassword,
+            password, 
             portrait,
             isAdmin,
             rank,
-            clearanceLevel,
+            clearanceLevel: clearanceLevel || 'No Rank',
             department,
             title,
             credits,
-            personalinfo, 
-            taskList: [] 
+            personalinfo
         });
 
         const savedUser = await newUser.save();
-
         res.status(201).json({ message: "User created successfully", userId: savedUser._id });
     } catch (error) {
         console.error("Error adding new user:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
 
 
 router.get('/user/:userId', async (req, res) => {
