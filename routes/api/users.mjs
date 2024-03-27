@@ -158,9 +158,10 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  });
+});
+
   
-  router.post('/user/task/add/:userId', checkToken, async (req, res) => {
+router.post('/user/task/add/:userId', checkToken, async (req, res) => {
     const { userId } = req.params;
     const newTask = req.body;
   
@@ -179,7 +180,8 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  });
+});
+
   
   router.delete('/user/task/delete/:userId/:taskId', checkToken, async (req, res) => {
     const { userId, taskId } = req.params;
@@ -204,7 +206,8 @@ router.patch('/user/task/update/:userId/:taskId', checkToken, async (req, res) =
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  });
+});
+
   
 
 router.delete('/user/delete/:userId',checkAdminToken, async (req, res) => {
