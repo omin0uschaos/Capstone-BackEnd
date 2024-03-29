@@ -24,10 +24,9 @@ const missionSchema = new mongoose.Schema({
   MissionPhoto: {
     type: String
   },
-  CrewIds: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users'
-  }]
+  CrewUsernames: [{
+     type: String 
+    }]
 });
 
 

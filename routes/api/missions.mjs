@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-//Route only works on Localhost
+// Route only works on Localhost
 router.get('/seed', async (req, res) => {
   try {
     await Missions.deleteMany({});
@@ -32,15 +32,16 @@ router.get('/seed', async (req, res) => {
         default: crewCount = 2;
       }
 
-      // Get random user ids
-      const crewIds = await User.aggregate([
+      const users = await User.aggregate([
+        { $match: { isAdmin: false } },
         { $sample: { size: crewCount } },
-        { $project: { _id: 1 } }
+        { $project: { username: 1, _id: 0 } }
       ]);
 
-      mission.CrewIds = crewIds.map(crew => crew._id);
+      const usernames = users.map(user => user.username);
 
-      // Create and save the mission
+      mission.CrewUsernames = usernames;
+
       const newMission = new Missions(mission);
       await newMission.save();
     }
@@ -51,5 +52,7 @@ router.get('/seed', async (req, res) => {
     res.status(500).send('Error seeding missions');
   }
 });
+
+
 
 export default router;
