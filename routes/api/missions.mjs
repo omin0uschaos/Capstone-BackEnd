@@ -6,6 +6,16 @@ import { missionsData } from '../../utilities/sampleMissions.mjs'
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  try {
+      const allMissions = await Missions.find({});
+      res.send(allMissions);
+  } catch (error) {
+      console.error(error);
+  }
+})
+
+//Route only works on Localhost
 router.get('/seed', async (req, res) => {
   try {
     await Missions.deleteMany({});
